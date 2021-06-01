@@ -15,7 +15,7 @@ const LoginScreen = ({navigation}) => {
   } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const {setUser} = useContext(AuthContext);
+  const {saveUser} = useContext(AuthContext);
 
   const onSubmit = async data => {
     setIsLoading(true);
@@ -23,7 +23,7 @@ const LoginScreen = ({navigation}) => {
     try {
       const token = await LoginService.login(email, password);
       setIsLoading(false);
-      setUser(token);
+      saveUser(token.token);
     } catch (error) {
       setIsLoading(false);
       Alert.alert(error.message);
@@ -108,7 +108,13 @@ const LoginScreen = ({navigation}) => {
             title="Iniciar Sesion"
           />
         </View>
-        <Text onPress={()=>{navigation.navigate('SignUp')}} style={LoginStyles.registerLink}>Registrarse</Text>
+        <Text
+          onPress={() => {
+            navigation.navigate('SignUp');
+          }}
+          style={LoginStyles.registerLink}>
+          Registrarse
+        </Text>
       </View>
     </SafeAreaView>
   );
