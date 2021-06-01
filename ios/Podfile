@@ -12,6 +12,8 @@ target 'Agrotic' do
     :hermes_enabled => false
   )
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'AgroticTests' do
     inherit! :complete
     # Pods for testing

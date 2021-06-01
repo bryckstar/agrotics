@@ -1,0 +1,1 @@
+export const urlApi = 'http://3.94.115.31:3000'

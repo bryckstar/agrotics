@@ -1,17 +1,19 @@
-import {createStackNavigator} from 'react-navigation-stack';
-
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from '_scenes/login';
+import SignupScreen from '_scenes/signup';
 
-const AuthNavigatorConfig = {
-  initialRouteName: 'Login',
-  header: null,
-  headerMode: 'none',
+const Stack = createStackNavigator();
+const AuthNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        options={{headerShown: false}}
+        component={LoginScreen}
+      />
+      <Stack.Screen name="SignUp" component={SignupScreen} />
+    </Stack.Navigator>
+  );
 };
-
-const RouteConfigs = {
-  Login:LoginScreen,
-};
-
-const AuthNavigator = createStackNavigator(RouteConfigs, AuthNavigatorConfig);
-
 export default AuthNavigator;
