@@ -6,7 +6,7 @@ import {ActivityIndicator} from 'react-native';
 import {View} from 'react-native';
 import AuthNavigator from '_navigations/auth-navigator.js';
 import {AuthContext} from '../contexts/authContext';
-import {AppNavigator} from './app-navigator';
+import {DrawerNavigator} from './app-navigator';
 import {createStackNavigator} from '@react-navigation/stack';
 import {LoadingStyles} from './styles';
 const Stack = createStackNavigator();
@@ -17,7 +17,7 @@ export const RootNavigator = () => {
       {isLoading ? (
         <LoadingNavigator />
       ) : user ? (
-        <AppNavigator />
+        <DrawerNavigator />
       ) : (
         <AuthNavigator />
       )}

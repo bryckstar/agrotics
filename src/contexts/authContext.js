@@ -14,9 +14,10 @@ export const AuthProvider = ({children}) => {
 
   const saveUser = async token => {
     try {
-      await AsyncStorage.setItem('token', token);
-      setUser(token);
-    } catch (error) {}
+      const token = await AsyncStorage.setItem('token', token);
+    } catch (error) {
+      setIsLoading(false);
+    }
   };
   const getUser = async () => {
     try {
@@ -26,13 +27,19 @@ export const AuthProvider = ({children}) => {
         setUser(token);
       } else {
         setUser('');
+        setIsLoading(false);
       }
     } catch (error) {
       setUser('');
     }
   };
+  const logOut = async () => {
+    await AsyncStorage.removeItem('token');
+    setIsLoading(false);
+    setUser('');
+  };
   return (
-    <AuthContext.Provider value={{user, saveUser, isLoading}}>
+    <AuthContext.Provider value={{user, saveUser, isLoading, logOut}}>
       {children}
     </AuthContext.Provider>
   );
