@@ -14,7 +14,9 @@ export const AuthProvider = ({children}) => {
 
   const saveUser = async token => {
     try {
-      const token = await AsyncStorage.setItem('token', token);
+      await AsyncStorage.setItem('token', token);
+      setUser(token);
+      setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
     }

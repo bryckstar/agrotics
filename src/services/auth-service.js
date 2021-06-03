@@ -17,6 +17,7 @@ export const LoginService = {
       const data = await axios.post(`${urlApi}/users/register`, formFields);
       return data.data.message;
     } catch (error) {
+      console.log(error);
       throw new Error(error);
     }
   },
