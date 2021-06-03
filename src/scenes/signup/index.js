@@ -124,6 +124,7 @@ const SignupScreen = ({navigation}) => {
       <Text
         onPress={() => {
           console.log(errors);
+          navigation.navigate('Login');
         }}
         style={LoginStyles.registerLink}>
         Iniciar Sesion
