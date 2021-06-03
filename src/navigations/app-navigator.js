@@ -22,7 +22,7 @@ export const AppNavigator = ({navigation}) => {
         component={HomeScreen}
         options={{
           headerShown: true,
-
+          headerTitle:'AgroTICS',
           headerLeftContainerStyle: {width: 'auto', marginLeft: '5%'},
           headerLeft: () => (
             <View
