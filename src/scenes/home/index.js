@@ -50,7 +50,9 @@ const HomeScreen = ({navigation}) => {
       />
       <FlatList
         data={plantsList}
-        renderItem={item => <PlantCard item={item} key={item.item._id} />}
+        renderItem={item => (
+          <PlantCard item={item} navigation={navigation} key={item.item._id} />
+        )}
         onEndReached={() => {}}
         onRefresh={() => {
           setIsLoading(true);
