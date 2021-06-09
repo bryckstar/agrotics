@@ -3,9 +3,12 @@ import {Text, View} from 'react-native';
 import {cardStyles} from './plant-card-styles';
 import {DateTime} from 'luxon';
 import {TouchableOpacity} from 'react-native';
-export const PlantCard = ({item}) => {
+export const PlantCard = ({item, navigation}) => {
   return (
-    <TouchableOpacity onPress={()=>{console.log('xd');}}>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('PlantScreen');
+      }}>
       <View style={cardStyles.container}>
         <Text>{item.item.commonName}</Text>
         <Text>{item.item.cientificName}</Text>

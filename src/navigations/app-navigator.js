@@ -3,6 +3,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../scenes/home';
 import {ReadQrScreen} from '../scenes/home/scenes/read-qr';
 import {RegisterFormScreen} from '../scenes/home/scenes/register-form';
+import PlantScreen from '../scenes/plant';
+import {PlantCard} from '../components/home-components/plant-card/plant-card';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -22,7 +24,7 @@ export const AppNavigator = ({navigation}) => {
         component={HomeScreen}
         options={{
           headerShown: true,
-          headerTitle:'AgroTICS',
+          headerTitle: 'AgroTICS',
           headerLeftContainerStyle: {width: 'auto', marginLeft: '5%'},
           headerLeft: () => (
             <View
@@ -44,6 +46,8 @@ export const AppNavigator = ({navigation}) => {
       />
       <Stack.Screen name="ReadQr" component={ReadQrScreen} />
       <Stack.Screen name="RegisterData" component={RegisterFormScreen} />
+      <Stack.Screen name="PlantScreen" component={PlantScreen} />
+      <Stack.Screen name="PlantCard" component={PlantCard} />
     </Stack.Navigator>
   );
 };

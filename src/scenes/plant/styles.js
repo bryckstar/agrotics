@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const LoginStyles = StyleSheet.create({
+export const PlantStyles = StyleSheet.create({
   viewWrapper: {
     backgroundColor: 'white',
     height: '100%',
