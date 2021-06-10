@@ -5,6 +5,7 @@ axios.defaults.baseURL = urlApi;
 
 export const campDataService = {
   async registerCampData(formFields) {
+    console.log(formFields);
     const token = await getToken();
     try {
       const data = await axios.post(`${urlApi}/campData/`, formFields, {

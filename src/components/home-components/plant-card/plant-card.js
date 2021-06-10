@@ -5,11 +5,13 @@ import {DateTime} from 'luxon';
 import {TouchableOpacity} from 'react-native';
 import _ from 'lodash';
 export const PlantCard = ({item, navigation}) => {
+  const id = _.get(item, 'item._id');
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('PlantScreen');
-        let id = _.get(item, 'item._id');
+        navigation.navigate('PlantScreen', {
+          paramKey: id,
+        });
         console.log(id);
       }}>
       <View style={cardStyles.container}>

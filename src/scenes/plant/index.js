@@ -5,7 +5,9 @@ import {Alert, SafeAreaView, View, ScrollView} from 'react-native';
 import {PlantStyles} from './styles';
 import {campDataService} from '../../services/campData-service';
 
-const PlantScreen = ({navigation}) => {
+const PlantScreen = ({route}) => {
+  const id = route.params.paramKey;
+  console.log(id);
   const {
     control,
     handleSubmit,
@@ -13,11 +15,11 @@ const PlantScreen = ({navigation}) => {
   } = useForm();
   const onSubmit = async data => {
     try {
-      console.log(data, 'data');
       const message = await campDataService.registerCampData(data);
-      Alert.alert(message);
+      console.log(data, 'data');
+      Alert.alert(JSON.stringify(message));
     } catch (error) {
-      Alert.alert(error);
+      Alert.alert(JSON.stringify(error));
     }
   };
   return (
@@ -25,10 +27,26 @@ const PlantScreen = ({navigation}) => {
       <ScrollView>
         <View style={PlantStyles.viewWrapper}>
           <View style={PlantStyles.formWrapper}>
+            <Text>Values passed from First page: {route.params.paramKey}</Text>
             <Text h1 style={{textAlign: 'center'}}>
               {' '}
               Datos de Campo
             </Text>
+            <Controller
+              control={control}
+              render={({field: {onChange, onBlur, value}}) => (
+                <Input
+                  tyle={{marginTop: '5%'}}
+                  placeholder="Ubicacion"
+                  onBlur={onBlur}
+                  onChangeText={value => onChange(value)}
+                  value={id}
+                />
+              )}
+              name="idPlant"
+              rules={{required: false}}
+              defaultValue={id}
+            />
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
