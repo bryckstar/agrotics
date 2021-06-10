@@ -8,7 +8,7 @@ export const PlantStyles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingTop: '30%',
+    paddingTop: '10%',
   },
   formWrapper: {
     borderRadius: 10,
