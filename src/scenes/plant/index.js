@@ -3,6 +3,7 @@ import {Button, Input, Text} from 'react-native-elements';
 import {useForm, Controller} from 'react-hook-form';
 import {Alert, SafeAreaView, View, ScrollView} from 'react-native';
 import {PlantStyles} from './styles';
+import {campDataService} from '../../services/campData-service';
 
 const PlantScreen = ({navigation}) => {
   const {
@@ -10,8 +11,14 @@ const PlantScreen = ({navigation}) => {
     handleSubmit,
     formState: {errors},
   } = useForm();
-  const onSubmit = data => {
-    console.log(data, 'data');
+  const onSubmit = async data => {
+    try {
+      console.log(data, 'data');
+      const message = await campDataService.registerCampData(data);
+      Alert.alert(message);
+    } catch (error) {
+      Alert.alert(error);
+    }
   };
   return (
     <SafeAreaView>
