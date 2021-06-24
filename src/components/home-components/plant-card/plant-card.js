@@ -15,12 +15,12 @@ export const PlantCard = ({item, navigation}) => {
         console.log(id);
       }}>
       <View style={cardStyles.container}>
-        <Text>{item.item.commonName}</Text>
-        <Text>{item.item.cientificName}</Text>
-        <Text>
+        <Text style={cardStyles.Text}>{item.item.commonName}</Text>
+        <Text style={cardStyles.Text}>{item.item.cientificName}</Text>
+        <Text style={cardStyles.Text}>
           {DateTime.fromISO(item.item.createdAt).toFormat('yyyy-LL-dd , HH:mm')}
         </Text>
-        <Text>
+        <Text style={cardStyles.Text}>
           {item.item.createdBy.firstName} {item.item.createdBy.lastName}
         </Text>
       </View>
