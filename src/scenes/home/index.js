@@ -66,7 +66,7 @@ const HomeScreen = ({navigation}) => {
           name="add"
           reverse={true}
           raised={true}
-          color="#517fa4"
+          color="#FEBE19"
           size={32}
           onPress={() => {
             navigation.navigate('ReadQr');

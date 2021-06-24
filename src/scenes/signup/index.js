@@ -119,7 +119,11 @@ const SignupScreen = ({navigation}) => {
           rules={{required: true, minLength: 6}}
           defaultValue=""
         />
-        <Button title="Registrarse" onPress={handleSubmit(onSubmit)} />
+        <Button
+          buttonStyle={SignUpStyles.boton}
+          title="Registrarse"
+          onPress={handleSubmit(onSubmit)}
+        />
       </View>
       <Text
         onPress={() => {
@@ -127,7 +131,7 @@ const SignupScreen = ({navigation}) => {
           navigation.navigate('Login');
         }}
         style={LoginStyles.registerLink}>
-        Iniciar Sesion
+        Iniciar Sesión
       </Text>
     </View>
   );

@@ -7,6 +7,7 @@ import {Button, Input, Text} from 'react-native-elements';
 import {AuthContext} from '../../contexts/authContext';
 import {LoginService} from '../../services/auth-service';
 import {useForm, Controller} from 'react-hook-form';
+import Title from '../../assets/images/titulo.svg';
 const LoginScreen = ({navigation}) => {
   const {
     control,
@@ -33,10 +34,9 @@ const LoginScreen = ({navigation}) => {
     <SafeAreaView>
       <View style={LoginStyles.viewWrapper}>
         <View style={LoginStyles.formWrapper}>
-          <Text h1 style={{textAlign: 'center'}}>
-            {' '}
-            AgroTICS
-          </Text>
+          <View style={{paddingLeft: 25}}>
+            <Title />
+          </View>
           <Controller
             control={control}
             render={({field: {onChange, onBlur, value}}) => (
@@ -102,10 +102,10 @@ const LoginScreen = ({navigation}) => {
             defaultValue=""
           />
           <Button
-            type="outline"
+            buttonStyle={LoginStyles.boton}
             loading={isLoading}
             onPress={handleSubmit(onSubmit)}
-            title="Iniciar Sesion"
+            title="Iniciar Sesión"
           />
         </View>
         <Text

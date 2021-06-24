@@ -43,9 +43,21 @@ export const AppNavigator = ({navigation}) => {
           ),
         }}
       />
-      <Stack.Screen name="ReadQr" component={ReadQrScreen} />
+      <Stack.Screen
+        name="ReadQr"
+        component={ReadQrScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen name="RegisterData" component={RegisterFormScreen} />
-      <Stack.Screen name="PlantScreen" component={PlantScreen} />
+      <Stack.Screen
+        name="PlantScreen"
+        component={PlantScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };

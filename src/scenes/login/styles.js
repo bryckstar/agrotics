@@ -36,6 +36,9 @@ export const LoginStyles = StyleSheet.create({
     textDecorationLine: 'underline',
     fontSize: 15,
     marginTop: '5%',
-    color: '#7C89DC',
+    color: '#639E2E',
+  },
+  boton: {
+    backgroundColor: '#639E2E',
   },
 });

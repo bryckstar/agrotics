@@ -23,4 +23,7 @@ export const SignUpStyles = StyleSheet.create({
 
     elevation: 10,
   },
+  boton: {
+    backgroundColor: '#639E2E',
+  },
 });
