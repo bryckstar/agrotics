@@ -4,7 +4,8 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 
 export const QRCodeReader = ({navigation}) => {
   const onSuccess = e => {
-    navigation.navigate('RegisterData', {id: e.data});
+    console.log(e.data);
+    navigation.navigate('PlantScreen', {id: e.data});
   };
   return (
     <QRCodeScanner

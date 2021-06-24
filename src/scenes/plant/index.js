@@ -7,7 +7,9 @@ import {campDataService} from '../../services/campData-service';
 
 const PlantScreen = ({route}) => {
   const id = route.params.paramKey;
+  const id2 = route.params.id;
   console.log(id);
+  console.log("esto esta pasando",id2);
   const {
     control,
     handleSubmit,
@@ -27,7 +29,6 @@ const PlantScreen = ({route}) => {
       <ScrollView>
         <View style={PlantStyles.viewWrapper}>
           <View style={PlantStyles.formWrapper}>
-            <Text>Values passed from First page: {route.params.paramKey}</Text>
             <Text h1 style={{textAlign: 'center'}}>
               {' '}
               Datos de Campo
@@ -40,12 +41,12 @@ const PlantScreen = ({route}) => {
                   placeholder="Ubicacion"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
-                  value={id}
+                  value={id || id2}
                 />
               )}
               name="idPlant"
               rules={{required: false}}
-              defaultValue={id}
+              defaultValue={id || id2}
             />
             <Controller
               control={control}
