@@ -38,4 +38,11 @@ export const PlantStyles = StyleSheet.create({
     marginTop: '5%',
     color: '#7C89DC',
   },
+  ConatinerStyle: {
+    flexDirection: 'column',
+    flex: 1
+  },
+  Button: {
+    backgroundColor: '#639E2E',
+  }
 });
