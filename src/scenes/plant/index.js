@@ -1,11 +1,12 @@
-import React from 'react';
-import {Button, Input, Text} from 'react-native-elements';
+import React, {useState}  from 'react';
+import {Button, Input, Text, Slider} from 'react-native-elements';
 import {useForm, Controller} from 'react-hook-form';
-import {Alert, SafeAreaView, View, ScrollView} from 'react-native';
+import {Alert, SafeAreaView, View, ScrollView, Animated} from 'react-native';
 import {PlantStyles} from './styles';
 import {campDataService} from '../../services/campData-service';
 
 const PlantScreen = ({route}) => {
+  const [sliderValue, setSliderValue] = useState(7);
   const id = route.params.paramKey;
   const id2 = route.params.id;
   console.log(id);
@@ -25,7 +26,7 @@ const PlantScreen = ({route}) => {
     }
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={PlantStyles.ConatinerStyle}>
       <ScrollView>
         <View style={PlantStyles.viewWrapper}>
           <View style={PlantStyles.formWrapper}>
@@ -38,7 +39,7 @@ const PlantScreen = ({route}) => {
               render={({field: {onChange, onBlur, value}}) => (
                 <Input
                   tyle={{marginTop: '5%'}}
-                  placeholder="Ubicacion"
+                  placeholder="Ubicación"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={id || id2}
@@ -53,7 +54,7 @@ const PlantScreen = ({route}) => {
               render={({field: {onChange, onBlur, value}}) => (
                 <Input
                   tyle={{marginTop: '5%'}}
-                  placeholder="Ubicacion"
+                  placeholder="Ubicación"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
@@ -99,7 +100,7 @@ const PlantScreen = ({route}) => {
                 <Input
                   style={{marginTop: '5%'}}
                   keyboardType="numeric"
-                  placeholder="Area plantada (Metros cuadrados)"
+                  placeholder="Área plantada (Metros cuadrados)"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
@@ -162,7 +163,7 @@ const PlantScreen = ({route}) => {
                 <Input
                   style={{marginTop: '5%'}}
                   keyboardType="numeric"
-                  placeholder="Diametro (cm)"
+                  placeholder="Diámetro (cm)"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
@@ -274,7 +275,7 @@ const PlantScreen = ({route}) => {
                 <Input
                   style={{marginTop: '5%'}}
                   keyboardType="numeric"
-                  placeholder="Diametro de fruta (cm)"
+                  placeholder="Diámetro de fruta (cm)"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
@@ -306,7 +307,7 @@ const PlantScreen = ({route}) => {
                 <Input
                   style={{marginTop: '5%'}}
                   keyboardType="numeric"
-                  placeholder="Producion por planta (kg)"
+                  placeholder="Producción por planta (kg)"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
@@ -316,22 +317,34 @@ const PlantScreen = ({route}) => {
               rules={{required: false}}
               defaultValue=""
             />
+            <Slider
+                  value={sliderValue}
+                  maximumValue={10}
+                  minimumValue={0}
+                  step={0.10}
+                  onValueChange={(sliderValue) => setSliderValue(sliderValue)}
+                  thumbStyle={{ height: 40, width: 40, backgroundColor: '#639E2E' }}
+                  
+            ></Slider>
+            <Text>Value: {sliderValue}</Text>
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
                 <Input
-                  style={{marginTop: '5%'}}
-                  keyboardType="numeric"
-                  placeholder="Ph suelo (%)"
-                  onBlur={onBlur}
-                  onChangeText={value => onChange(value)}
+                  style ={{marginTop: '5%'}}
+                  keyboardType ="numeric"
+                  placeholder ="Ph suelo (%)"
+                  onBlur ={onBlur}
+                  onChangeText ={value => onChange(value)}
                   value={value}
                 />
               )}
+              
               name="groundPh"
               rules={{required: false}}
               defaultValue=""
             />
+            
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
@@ -568,14 +581,16 @@ const PlantScreen = ({route}) => {
               rules={{required: false}}
               defaultValue=""
             />
-            <Button
-              style={{marginTop: '10%'}}
-              onPress={handleSubmit(onSubmit)}
-              title="Enviar"
-            />
           </View>
         </View>
       </ScrollView>
+      <View>
+        <Button
+          buttonStyle={PlantStyles.Button}
+          onPress={handleSubmit(onSubmit)}
+          title="Enviar"
+        />
+      </View>
     </SafeAreaView>
   );
 };
