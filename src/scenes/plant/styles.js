@@ -3,16 +3,23 @@ import {StyleSheet} from 'react-native';
 export const PlantStyles = StyleSheet.create({
   viewWrapper: {
     backgroundColor: 'white',
+    width: '100%',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingTop: '10%',
+  },
+  datos: {
+    color: '#8C8C8C',
+    fontSize: 24,
+    textAlign: 'left',
+  },
+  CollapsibleView: {
+    borderWidth: 0,
+    alignItems: 'flex-start',
   },
   formWrapper: {
-    borderRadius: 10,
-    padding: '5%',
+    paddingTop: '5%',
+    paddingBottom: '10%',
     backgroundColor: 'white',
     shadowColor: '#000',
     shadowOffset: {
@@ -23,9 +30,11 @@ export const PlantStyles = StyleSheet.create({
     shadowRadius: 3.84,
 
     elevation: 5,
-    width: '85%',
+    width: '100%',
+    height: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
+    flex: 1,
   },
   input: {
     borderBottomWidth: 1,
@@ -39,10 +48,10 @@ export const PlantStyles = StyleSheet.create({
     color: '#7C89DC',
   },
   ConatinerStyle: {
+    flex: 1,
     flexDirection: 'column',
-    flex: 1
   },
   Button: {
     backgroundColor: '#639E2E',
-  }
+  },
 });

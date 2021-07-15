@@ -25,6 +25,7 @@ export const AppNavigator = ({navigation}) => {
           headerShown: true,
           headerTitle: 'AgroTICS',
           headerLeftContainerStyle: {width: 'auto', marginLeft: '5%'},
+          headerTitleStyle: {color: '#639E2E'},
           headerLeft: () => (
             <View
               style={{
@@ -66,12 +67,22 @@ export const DrawerNavigator = () => {
   const {logOut} = useContext(AuthContext);
   return (
     <Drawer.Navigator
+      drawerContentOptions={{
+        activeTintColor: '#88D046',
+        itemStyle: {marginVertical: 5},
+      }}
+      drawerStyle={{
+        backgroundColor: 'white',
+        width: 240,
+      }}
       initialRouteName="Home"
       drawerContent={props => (
         <DrawerContentScrollView>
           <DrawerItemList {...props} />
           <DrawerItem
+            color="#88D046"
             label="Cerrar Sesión"
+            pressColor="#88D046"
             onPress={() => {
               logOut();
             }}
