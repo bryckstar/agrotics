@@ -1,16 +1,17 @@
-import React, {useState}  from 'react';
+import React, {useState} from 'react';
 import {Button, Input, Text, Slider} from 'react-native-elements';
 import {useForm, Controller} from 'react-hook-form';
 import {Alert, SafeAreaView, View, ScrollView, Animated} from 'react-native';
 import {PlantStyles} from './styles';
 import {campDataService} from '../../services/campData-service';
+import CollapsibleView from '@eliav2/react-native-collapsible-view';
 
 const PlantScreen = ({route}) => {
   const [sliderValue, setSliderValue] = useState(7);
   const id = route.params.paramKey;
   const id2 = route.params.id;
   console.log(id);
-  console.log("esto esta pasando",id2);
+  console.log('esto esta pasando', id2);
   const {
     control,
     handleSubmit,
@@ -26,14 +27,24 @@ const PlantScreen = ({route}) => {
     }
   };
   return (
-    <SafeAreaView style={PlantStyles.ConatinerStyle}>
+    <View style={PlantStyles.viewWrapper}>
       <ScrollView>
-        <View style={PlantStyles.viewWrapper}>
-          <View style={PlantStyles.formWrapper}>
-            <Text h1 style={{textAlign: 'center'}}>
+        <View style={PlantStyles.formWrapper}>
+          <View style={{padding: '10%', paddingTop: '20%'}}>
+            <Text h1 style={{textAlign: 'center', color: '#639E2E'}}>
               {' '}
               Datos de Campo
             </Text>
+          </View>
+          <CollapsibleView
+            title={<Text style={PlantStyles.datos}>Datos de Planta</Text>}
+            style={PlantStyles.CollapsibleView}
+            arrowStyling={{
+              size: 24,
+              rounded: true,
+              thickness: 2,
+              color: '#88D046',
+            }}>
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
@@ -110,6 +121,7 @@ const PlantScreen = ({route}) => {
               rules={{required: false}}
               defaultValue=""
             />
+
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
@@ -221,6 +233,16 @@ const PlantScreen = ({route}) => {
               rules={{required: false}}
               defaultValue=""
             />
+          </CollapsibleView>
+          <CollapsibleView
+            title={<Text style={PlantStyles.datos}>Datos de Producción</Text>}
+            style={PlantStyles.CollapsibleView}
+            arrowStyling={{
+              size: 24,
+              rounded: true,
+              thickness: 2,
+              color: '#88D046',
+            }}>
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
@@ -317,34 +339,33 @@ const PlantScreen = ({route}) => {
               rules={{required: false}}
               defaultValue=""
             />
-            <Slider
-                  value={sliderValue}
-                  maximumValue={10}
-                  minimumValue={0}
-                  step={0.10}
-                  onValueChange={(sliderValue) => setSliderValue(sliderValue)}
-                  thumbStyle={{ height: 40, width: 40, backgroundColor: '#639E2E' }}
-                  
-            ></Slider>
-            <Text>Value: {sliderValue}</Text>
+          </CollapsibleView>
+          <CollapsibleView
+            title={<Text style={PlantStyles.datos}>Datos Bioquímicos</Text>}
+            style={PlantStyles.CollapsibleView}
+            arrowStyling={{
+              size: 24,
+              rounded: true,
+              thickness: 2,
+              color: '#88D046',
+            }}>
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
                 <Input
-                  style ={{marginTop: '5%'}}
-                  keyboardType ="numeric"
-                  placeholder ="Ph suelo (%)"
-                  onBlur ={onBlur}
-                  onChangeText ={value => onChange(value)}
+                  style={{marginTop: '5%'}}
+                  keyboardType="numeric"
+                  placeholder="Ph suelo (%)"
+                  onBlur={onBlur}
+                  onChangeText={value => onChange(value)}
                   value={value}
                 />
               )}
-              
               name="groundPh"
               rules={{required: false}}
               defaultValue=""
             />
-            
+
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
@@ -424,6 +445,16 @@ const PlantScreen = ({route}) => {
               rules={{required: false}}
               defaultValue=""
             />
+          </CollapsibleView>
+          <CollapsibleView
+            title={<Text style={PlantStyles.datos}>Datos Meteorológicos</Text>}
+            style={PlantStyles.CollapsibleView}
+            arrowStyling={{
+              size: 24,
+              rounded: true,
+              thickness: 2,
+              color: '#88D046',
+            }}>
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
@@ -472,6 +503,16 @@ const PlantScreen = ({route}) => {
               rules={{required: false}}
               defaultValue=""
             />
+          </CollapsibleView>
+          <CollapsibleView
+            title={<Text style={PlantStyles.datos}>Datos de Fertilizante</Text>}
+            style={PlantStyles.CollapsibleView}
+            arrowStyling={{
+              size: 24,
+              rounded: true,
+              thickness: 2,
+              color: '#88D046',
+            }}>
             <Controller
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
@@ -581,9 +622,10 @@ const PlantScreen = ({route}) => {
               rules={{required: false}}
               defaultValue=""
             />
-          </View>
+          </CollapsibleView>
         </View>
       </ScrollView>
+
       <View>
         <Button
           buttonStyle={PlantStyles.Button}
@@ -591,7 +633,7 @@ const PlantScreen = ({route}) => {
           title="Enviar"
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
