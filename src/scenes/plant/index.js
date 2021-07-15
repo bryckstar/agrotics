@@ -79,11 +79,12 @@ const PlantScreen = ({route}) => {
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
                 <Input
-                  tyle={{marginTop: '5%'}}
+                  style={{marginTop: '5%', display:'none'}}
                   placeholder="Fecha"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
+                  defaultValue={new Date().toISOString()}
                 />
               )}
               name="date"
