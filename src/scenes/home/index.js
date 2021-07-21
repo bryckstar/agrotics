@@ -44,10 +44,6 @@ const HomeScreen = ({navigation}) => {
         flexDirection: 'column',
         height: '100%',
       }}>
-      <Input
-        placeholder="Buscar"
-        rightIcon={<Icon name="search" size={24} color="black" />}
-      />
       <FlatList
         data={plantsList}
         renderItem={item => (

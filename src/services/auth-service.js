@@ -14,10 +14,7 @@ export const LoginService = {
   },
   async register(formFields) {
     try {
-      const data = await axios.post(
-        `${urlApi}/users/register`,
-        JSON.stringify(formFields),
-      );
+      const data = await axios.post(`${urlApi}/users/register`, formFields);
       return data.data.message;
     } catch (error) {
       console.log(error);
