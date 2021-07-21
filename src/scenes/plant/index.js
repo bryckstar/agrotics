@@ -79,7 +79,7 @@ const PlantScreen = ({route}) => {
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
                 <Input
-                  style={{marginTop: '5%', display:'none'}}
+                  style={{marginTop: '5%', display: 'none'}}
                   placeholder="Fecha"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
@@ -518,24 +518,9 @@ const PlantScreen = ({route}) => {
               control={control}
               render={({field: {onChange, onBlur, value}}) => (
                 <Input
-                  style={{marginTop: '5%'}}
-                  keyboardType="numeric"
-                  placeholder="Lluvia de Riego (ml/planta)"
-                  onBlur={onBlur}
-                  onChangeText={value => onChange(value)}
-                  value={value}
-                />
-              )}
-              name="irrigationRain"
-              rules={{required: false}}
-              defaultValue=""
-            />
-            <Controller
-              control={control}
-              render={({field: {onChange, onBlur, value}}) => (
-                <Input
                   tyle={{marginTop: '5%'}}
-                  placeholder="Fertilizante"
+                  keyboardType="numeric"
+                  placeholder="Fertilizante (g/planta)"
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}

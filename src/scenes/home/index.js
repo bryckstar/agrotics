@@ -59,7 +59,7 @@ const HomeScreen = ({navigation}) => {
       />
       <View style={{position: 'absolute', bottom: 20, right: 20}}>
         <Icon
-          name="add"
+          name="qr-code"
           reverse={true}
           raised={true}
           color="#FEBE19"
@@ -67,6 +67,7 @@ const HomeScreen = ({navigation}) => {
           onPress={() => {
             navigation.navigate('ReadQr');
           }}
+          
         />
       </View>
     </View>
